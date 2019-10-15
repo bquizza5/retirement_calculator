@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Finance from 'financejs'
 
 function Calculator() {
 
@@ -13,29 +12,21 @@ function Calculator() {
 
     const FV = (pv, i, pmt, n) => {
         let fv = pv
-        let count = 0
-        console.log(fv)
         for (let x = 0; x < n; x++) {
             fv = (fv).toFixed(2)*((1+(i/100))) + pmt
-            count += 1
-
         }
         setResults(fv.toFixed(2))
-
- 
-
-
     }
 
     const submitHandler = (n) => {
         n.preventDefault()
         FV(parseFloat(values.pv), parseFloat(values.i)/12, parseFloat(values.pmt), parseFloat(values.n)*12,)
-
     }
 
 
     return (
         <>
+            <h2>Calculator</h2>
             <form onSubmit={submitHandler}>
                 <input name='pv' placeholder='Present Value' onChange={changeHandler} value={values.pv} />
                 <input name='pmt' placeholder='Monthly Contribution' onChange={changeHandler} value={values.pmt} />
@@ -44,8 +35,7 @@ function Calculator() {
                 <button>calculate</button>
             </form>
             <div>
-                {results ? <p>{results}</p>: <div></div>}
-
+                {results ? <p>${results.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>: <div></div>}
             </div>
         </>
     );
