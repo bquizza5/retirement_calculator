@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 const Calculator = (props) => {
 
+    // get values from redux store
     useEffect(() => {
         setValues(props.state)
     },[])
@@ -38,15 +39,8 @@ const Calculator = (props) => {
             parseFloat(values.i) / 12,
             parseFloat(values.pmt),
             parseFloat(values.n) * 12
-        )
-
-        
-        
-        
+        ) 
     }
-
-    
-
 
     return (
         <>
