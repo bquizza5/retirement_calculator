@@ -23,6 +23,7 @@ const Calculator = (props) => {
         setValues({ ...values, [value.target.name]: value.target.value })
     }
 
+    //future value calculation
     const FV = (pv, i, pmt, n) => {
         let fv = pv
         for (let x = 0; x < n; x++) {
