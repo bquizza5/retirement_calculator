@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const Calculator = (props) => {
 
-    // get values from redux store
+    // get values from redux store if there are any
     useEffect(() => {
         setValues(props.state)
     },[])
@@ -30,6 +30,7 @@ const Calculator = (props) => {
             fv = (fv).toFixed(2) * ((1 + (i / 100))) + pmt
         }
         setValues({...values, fv:fv.toFixed(2)})
+        //put values in redux store
         props.updateAll({...values, fv:fv.toFixed(2)})
     }
 
