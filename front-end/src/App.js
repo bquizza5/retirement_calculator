@@ -5,7 +5,7 @@ import Home from './components/home'
 import './App.css';
 
 function App() {
-  const [tab, setTab] = useState("calc")
+  const [tab, setTab] = useState("home")
 
   return (
     <div className="App">
@@ -14,7 +14,7 @@ function App() {
       <h1>Retirement Calculator</h1>
       {tab === "calc" ? <Calculator /> : null}
       {tab === "plan" ? <Planner /> : null}
-      {tab === "home" ? <Home /> : null}
+      {tab === "home" ? <Home setTab={setTab} /> : null}
     </div>
   );
 }

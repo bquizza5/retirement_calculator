@@ -6,8 +6,9 @@ const Home = (props) => {
 
     return (
         <div>
-            
-            this is the home page
+            <button onClick={() => { props.setTab('calc') }}>calculator</button>
+            <button onClick={() => { props.setTab('plan') }}>planner</button>
+            <p>this is the home page</p>
         </div>
     )
 }
