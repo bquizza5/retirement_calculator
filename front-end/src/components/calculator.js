@@ -62,6 +62,8 @@ const Calculator = (props) => {
 }
 
 
+//connecting to actons and redux store
+
 const mapPropsToState = state => {
     return {state: state};
 };
