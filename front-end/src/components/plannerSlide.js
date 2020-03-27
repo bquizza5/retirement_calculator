@@ -14,6 +14,7 @@ const Slide = (props) => {
     const submitHandler = () => {
         if(state) {
             props.setter(state)
+            props.next()
         }
     }
 
