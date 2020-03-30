@@ -22,7 +22,7 @@ const Slide = (props) => {
         <div>
             <p>{props.question}</p>
             <input onChange={changeHandler} value={state} />
-            <button onClick={() => {submitHandler}}>next</button>
+            <button onClick={submitHandler}>next</button>
             <p>{props.slide}</p>
         </div>
     )

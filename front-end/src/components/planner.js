@@ -3,6 +3,7 @@ import { retirementBalance, pmtCalc } from './calculations'
 import { connect } from "react-redux";
 
 import { updateYwr, updateInflation, updateAllowance, updateN, updateMagicNum, updatePV, updateI } from '../actions/CalcActions'
+import SlideShow from './slideShow';
 
 
 function Planner(props) {
@@ -44,6 +45,7 @@ function Planner(props) {
 
     return (
         <>
+            <SlideShow />
             <h2>Retirement Planning</h2>
             <form onSubmit={submitHandler}>
                 <input name='allowance' placeholder='Desired Monthly Allowance' onChange={changeHandler} value={props.state.allowance} />
