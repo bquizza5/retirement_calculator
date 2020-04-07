@@ -1,27 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { updateI, updateN, updatePMT, updatePV, updateAll } from '../actions/CalcActions'
+import { connect } from "react-redux";
 
-function Calculator() {
+const Calculator = (props) => {
 
-    const [values, setValues] = useState({})
-    const [results, setResults] = useState()
+    useEffect(() => {
+        setValues(props.state)
+    },[])
+
+    const [values, setValues] = useState({
+        pv: '',
+        i: '',
+        pmt: '',
+        n: '',
+        fv: null
+    })
+
 
     const changeHandler = (value) => {
-        console.log(values)
+
         setValues({ ...values, [value.target.name]: value.target.value })
     }
 
     const FV = (pv, i, pmt, n) => {
         let fv = pv
         for (let x = 0; x < n; x++) {
-            fv = (fv).toFixed(2)*((1+(i/100))) + pmt
+            fv = (fv).toFixed(2) * ((1 + (i / 100))) + pmt
         }
-        setResults(fv.toFixed(2))
+        setValues({...values, fv:fv.toFixed(2)})
+        props.updateAll({...values, fv:fv.toFixed(2)})
     }
 
     const submitHandler = (n) => {
         n.preventDefault()
-        FV(parseFloat(values.pv), parseFloat(values.i)/12, parseFloat(values.pmt), parseFloat(values.n)*12,)
+        FV(
+            parseFloat(values.pv),
+            parseFloat(values.i) / 12,
+            parseFloat(values.pmt),
+            parseFloat(values.n) * 12
+        )
+
+        
+        
+        
     }
+
+    
 
 
     return (
@@ -35,10 +59,22 @@ function Calculator() {
                 <button>calculate</button>
             </form>
             <div>
-                {results ? <p>${results.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>: <div></div>}
+                {values.fv ? <p>${values.fv.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p> : <p></p>}
             </div>
         </>
     );
 }
 
-export default Calculator;
+
+const mapPropsToState = state => {
+    return {state: state};
+};
+
+export default connect(
+    mapPropsToState,
+    {   updateAll,
+        updatePV,
+        updatePMT,
+        updateI,
+        updateN
+    })(Calculator);
