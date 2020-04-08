@@ -12,25 +12,33 @@ const initialState = {
 const Reducer = (state = initialState, action) => {
     switch (action.type) {
         case 'UPDATE_PV': 
-        console.log("pv updated:", action.payload)
             return {
                 ...state,
-                pv: action.payload
+                pv: "$" + action.payload,
+                fv: ''
             }
         case 'UPDATE_I': 
             return {
                 ...state,
-                i: action.payload
+                i: action.payload,
+                fv: ''
             }
         case 'UPDATE_PMT': 
             return {
                 ...state,
-                pmt: action.payload
+                pmt: action.payload,
+                fv: ''
             }
         case 'UPDATE_N':
             return {
                 ...state,
-                n: action.payload
+                n: action.payload,
+                fv: ''
+            }
+        case 'UPDATE_FV':
+            return {
+                ...state,
+                fv: action.payload
             }
         case 'UPDATE_ALL':
             return action.payload

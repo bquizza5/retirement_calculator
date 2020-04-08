@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { retirementBalance } from './calculations'
 
 function Planner() {
 
@@ -10,18 +11,15 @@ function Planner() {
         setValues({ ...values, [value.target.name]: value.target.value })
     }
 
-    const retirementBalance = (allowance, rate, years, inflation) => {
-
-        let balance =((allowance*12)/(rate/100))*(Math.pow((inflation/100 + 1), years))
-        setResults(balance.toFixed(2))
-
-    }
     
-
-
     const submitHandler = (n) => {
         n.preventDefault()
-        retirementBalance(parseFloat(values.allowance), parseFloat(values.rate), parseFloat(values.years), parseFloat(values.inflation))
+        setResults(retirementBalance(
+            parseFloat(values.allowance), 
+            parseFloat(values.rate), 
+            parseFloat(values.years), 
+            parseFloat(values.inflation)
+            ))
         
     }
 
