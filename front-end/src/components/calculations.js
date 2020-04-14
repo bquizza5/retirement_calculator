@@ -1,7 +1,7 @@
 
 
 
-
+// future value calculation -- look for a better formula
 export const FV = (pv, i, pmt, n) => {
     let fv = pv
     for (let x = 0; x < n; x++) {
