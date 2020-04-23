@@ -23,3 +23,22 @@ export const updateAll = (newState) => {
 export const updateFV = (fv) => {
     return {type: 'UPDATE_FV', payload: fv}
 }
+
+
+// planner actions:
+
+export const updateYwr = (ywr) => {
+    return {type: 'UPDATE_YWR', payload: ywr}
+}
+
+export const updateInflation = (ywr) => {
+    return {type: 'UPDATE_INFLATION', payload: ywr}
+}
+
+export const updateAllowance = (ywr) => {
+    return {type: 'UPDATE_ALLOWANCE', payload: ywr}
+}
+
+export const updateMagicNum = (num) => {
+    return {type: 'UPDATE_MAGICNUM', payload: num}
+}

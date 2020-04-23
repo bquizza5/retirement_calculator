@@ -13,7 +13,7 @@ export const FV = (pv, i, pmt, n) => {
 
 //minimum needed to retire -- given monthly allowance
     //allowance = monthly allowance
-    //rate = average yearly return
+    //rate = yearly withdrawal rate
     //years = years left until desired retirement date
     //inflation = average inflation
 export const retirementBalance = (allowance, rate, years, inflation) => {

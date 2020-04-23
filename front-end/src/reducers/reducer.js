@@ -1,4 +1,11 @@
 
+// key:
+// allowance = desired monethly allowance in retirement
+// ywr = yearly withdrawl rate
+// n = years until retirement
+// inflation = averate exptected inflation rate
+// magicNum = the amount of money you need to retire according to your plan
+
 
 
 const initialState = {
@@ -6,7 +13,11 @@ const initialState = {
     i: '',
     pmt: '',
     n: '',
-    fv: ''
+    fv: '',
+    ywr: '',
+    inflation: '',
+    allowance: '',
+    magicNum : 0
 }
 
 const Reducer = (state = initialState, action) => {
@@ -14,7 +25,7 @@ const Reducer = (state = initialState, action) => {
         case 'UPDATE_PV': 
             return {
                 ...state,
-                pv: "$" + action.payload,
+                pv: action.payload,
                 fv: ''
             }
         case 'UPDATE_I': 
@@ -40,10 +51,33 @@ const Reducer = (state = initialState, action) => {
                 ...state,
                 fv: action.payload
             }
-        case 'UPDATE_ALL':
-            return action.payload
-            
+        
+        case 'UPDATE_YWR':
+            return {
+                ...state,
+                ywr: action.payload
+                }
+
+        case 'UPDATE_INFLATION':
+            return {
+                ...state,
+                inflation: action.payload
+            }
+
+        case 'UPDATE_ALLOWANCE':
+            return {
+                ...state,
+                allowance: action.payload
+                }
+
+        case 'UPDATE_MAGICNUM':
+            return {
+                ...state,
+                magicNum: action.payload
+                }
+
         default:
+            console.log("something wrong in reducer")
             return state
     }
 

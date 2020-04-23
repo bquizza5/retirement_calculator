@@ -59,8 +59,7 @@ const mapPropsToState = state => {
 
 export default connect(
     mapPropsToState,
-    {   updateAll,
-        updateFV,
+    {   updateFV,
         updatePV,
         updatePMT,
         updateI,
