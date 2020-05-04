@@ -1,11 +1,13 @@
-import React from 'react';
-import { retirementBalance } from './calculations'
+import React, { useState } from 'react';
+import { retirementBalance, pmtCalc } from './calculations'
 import { connect } from "react-redux";
 
-import { updateYwr, updateInflation, updateAllowance, updateN, updateMagicNum } from '../actions/CalcActions'
+import { updateYwr, updateInflation, updateAllowance, updateN, updateMagicNum, updatePV, updateI } from '../actions/CalcActions'
 
 
 function Planner(props) {
+
+    const [pmt, setPmt] = useState()
 
     const changeHandler = (e) => {
         switch (e.target.name) {
@@ -17,6 +19,10 @@ function Planner(props) {
                 return props.updateInflation(e.target.value);
             case 'years': 
                 return props.updateN(e.target.value);
+            case 'pv': 
+                return props.updatePV(e.target.value);
+            case 'i': 
+                return props.updateI(e.target.value);
             default:
                 console.log('something wrong:', e.target.name);   
         }
@@ -30,9 +36,11 @@ function Planner(props) {
             parseFloat(props.state.ywr), 
             parseFloat(props.state.n), 
             parseFloat(props.state.inflation)
-            )) 
+            ))
     }
-
+    const getPmt = () => {
+        setPmt(pmtCalc(props.state.pv, props.state.magicNum, props.state.i, props.state.n))
+    }
 
     return (
         <>
@@ -47,6 +55,18 @@ function Planner(props) {
             <div>
                 {props.state.magicNum > 0 ? <p>you will need ${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} to retire.</p>: <></>}
             </div>
+            <div>
+                {props.state.magicNum > 0 ? <>
+                <input name='pv' placeholder='How much you have now' onChange={changeHandler} value={props.state.pv} />
+                <input name='i' placeholder='Average Yearly Rate(%)' onChange={changeHandler} value={props.state.i} />
+                    </> : null
+            }
+                </div>
+            <div>
+                <button onClick={getPmt}>get pmt</button>
+                
+            </div>
+        {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p>: null}
         </>
     );
 }
@@ -61,5 +81,7 @@ export default connect(
         updateInflation, 
         updateAllowance,
         updateN,
-        updateMagicNum
+        updateMagicNum,
+        updatePV,
+        updateI
     })(Planner);
