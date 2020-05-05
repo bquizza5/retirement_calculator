@@ -18,14 +18,14 @@ export const FV = (pv, i, pmt, n) => {
     //inflation = average inflation
 export const retirementBalance = (allowance, rate, years, inflation) => {
 
-    return ((allowance*12)/(rate/100))*(Math.pow((inflation/100 + 1), years)).toFixed(2)
+    return (((allowance*12)/(rate/100))*(Math.pow((inflation/100 + 1), years))).toFixed(2)
 }
 
 export const pmtCalc = (pv, fv, r, n) => {
-    pv = parseInt(pv)
-    r = parseInt(r)
-    n = parseInt(n)
+    pv = parseFloat(pv)
+    r = parseFloat(r)
+    n = parseFloat(n)
 
-    return (fv - pv * Math.pow(((1 + (r/100) / 12)), n * 12)) / ((Math.pow(1 + (r/100) / 12, n * 12) - 1) / ((r/100) / 12))
+    return ((fv - pv * Math.pow(((1 + (r/100) / 12)), n * 12)) / ((Math.pow(1 + (r/100) / 12, n * 12) - 1) / ((r/100) / 12))).toFixed(2)
 
 }
