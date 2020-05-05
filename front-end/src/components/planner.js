@@ -13,30 +13,30 @@ function Planner(props) {
         switch (e.target.name) {
             case 'allowance':
                 return props.updateAllowance(e.target.value);
-            case 'ywr': 
+            case 'ywr':
                 return props.updateYwr(e.target.value);
-            case 'inflation': 
+            case 'inflation':
                 return props.updateInflation(e.target.value);
-            case 'years': 
+            case 'years':
                 return props.updateN(e.target.value);
-            case 'pv': 
+            case 'pv':
                 return props.updatePV(e.target.value);
-            case 'i': 
+            case 'i':
                 return props.updateI(e.target.value);
             default:
-                console.log('something wrong:', e.target.name);   
+                console.log('something wrong:', e.target.name);
         }
     }
 
-    
+
     const submitHandler = (n) => {
         n.preventDefault()
         props.updateMagicNum(retirementBalance(
-            parseFloat(props.state.allowance), 
-            parseFloat(props.state.ywr), 
-            parseFloat(props.state.n), 
+            parseFloat(props.state.allowance),
+            parseFloat(props.state.ywr),
+            parseFloat(props.state.n),
             parseFloat(props.state.inflation)
-            ))
+        ))
     }
     const getPmt = () => {
         setPmt(pmtCalc(props.state.pv, props.state.magicNum, props.state.i, props.state.n))
@@ -53,32 +53,35 @@ function Planner(props) {
                 <button>calculate</button>
             </form>
             <div>
-                {props.state.magicNum > 0 ? <p>you will need ${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} to retire.</p>: <></>}
+                {props.state.magicNum > 0 ? <p>you will need ${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} to retire.</p> : <></>}
             </div>
             <div>
-                {props.state.magicNum > 0 ? <>
-                <input name='pv' placeholder='How much you have now' onChange={changeHandler} value={props.state.pv} />
-                <input name='i' placeholder='Average Yearly Rate(%)' onChange={changeHandler} value={props.state.i} />
-                    </> : null
-            }
-                </div>
-            <div>
-                <button onClick={getPmt}>get pmt</button>
-                
+                {
+                props.state.magicNum > 0 ?
+                    <div>
+                        <p>How much do I need to contribute monthly to reach this goal?</p>
+                        <div><label>how much you have save now: </label><input name='pv' placeholder='How much you have now' onChange={changeHandler} value={props.state.pv} /></div>
+                        <div><label>expected average rate of return: </label><input name='i' placeholder='Average Yearly Rate(%)' onChange={changeHandler} value={props.state.i} /></div>
+                        <button onClick={getPmt}>get monthly contribution</button>
+                    </div>
+                    : null
+                }
             </div>
-        {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p>: null}
+
+            {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p> : null}
         </>
     );
 }
 
 const mapPropsToState = state => {
-    return {state: state};
+    return { state: state };
 };
 
 export default connect(
     mapPropsToState,
-    {   updateYwr, 
-        updateInflation, 
+    {
+        updateYwr,
+        updateInflation,
         updateAllowance,
         updateN,
         updateMagicNum,
