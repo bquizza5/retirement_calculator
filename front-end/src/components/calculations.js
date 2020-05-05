@@ -1,7 +1,7 @@
 
 
 
-
+// future value calculation -- look for a better formula
 export const FV = (pv, i, pmt, n) => {
     let fv = pv
     for (let x = 0; x < n; x++) {
@@ -21,6 +21,7 @@ export const retirementBalance = (allowance, rate, years, inflation) => {
     return (((allowance*12)/(rate/100))*(Math.pow((inflation/100 + 1), years))).toFixed(2)
 }
 
+//calculate monthly payment needed to hit your retirement balance in n years
 export const pmtCalc = (pv, fv, r, n) => {
     pv = parseFloat(pv)
     r = parseFloat(r)
