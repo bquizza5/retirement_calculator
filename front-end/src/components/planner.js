@@ -66,7 +66,7 @@ function Planner(props) {
                 <button onClick={getPmt}>get pmt</button>
                 
             </div>
-        {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toFixed(2).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p>: null}
+        {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p>: null}
         </>
     );
 }

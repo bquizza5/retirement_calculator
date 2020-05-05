@@ -26,6 +26,6 @@ export const pmtCalc = (pv, fv, r, n) => {
     r = parseInt(r)
     n = parseInt(n)
 
-    return (fv - pv * Math.pow(((1 + (r/100) / 12)), n * 12)) / ((Math.pow(1 + (r/100) / 12, n * 12) - 1) / ((r/100) / 12))
+    return ((fv - pv * Math.pow(((1 + (r/100) / 12)), n * 12)) / ((Math.pow(1 + (r/100) / 12, n * 12) - 1) / ((r/100) / 12))).toFixed(2)
 
 }
