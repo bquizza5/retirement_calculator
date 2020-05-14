@@ -13,7 +13,7 @@ const Header = (props) => {
 
     return (
         <div className='header'>
-            <img onClick={()=>{setTab('home')}} class='headerLogo' src={blueLogo} />
+            <img onClick={()=>{setTab('home')}} class='headerLogo' src={orangeLogo} />
             <div>
                 <button className={tab === 'calc' ? 'headerButton selected': 'headerButton'}  onClick={()=>{setTab('calc')}}>calculator</button>
                 <button className={tab === 'plan' ? 'headerButton selected': 'headerButton'} onClick={()=>{setTab('plan')}}>planner</button>
