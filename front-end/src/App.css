@@ -1,3 +1,55 @@
+/* CSS - Cascading Style Sheet */
+/* Palette color codes */
+/* Palette URL: http://paletton.com/#uid=3271o0kmp00twp5twp5Kr5xWI00 */
+
+/* Feel free to copy&paste color codes to your application */
+
+
+/* As hex codes */
+
+.color-primary-0 { color: #000000 }	/* Main Primary color */
+.color-primary-1 { color: #A2C10F }
+.color-primary-2 { color: #A2C10F }
+.color-primary-3 { color: #232A00 }
+.color-primary-4 { color: #000000 }
+
+.color-secondary-1-0 { color: #000000 }	/* Main Secondary color (1) */
+.color-secondary-1-1 { color: #134D81 }
+.color-secondary-1-2 { color: #134D81 }
+.color-secondary-1-3 { color: #01101C }
+.color-secondary-1-4 { color: #000000 }
+
+.color-secondary-2-0 { color: #000000 }	/* Main Secondary color (2) */
+.color-secondary-2-1 { color: #C87810 }
+.color-secondary-2-2 { color: #C87810 }
+.color-secondary-2-3 { color: #2C1900 }
+.color-secondary-2-4 { color: #000000 }
+
+
+
+/* As RGBa codes */
+
+.rgba-primary-0 { color: rgba(  0,  0,  0,1) }	/* Main Primary color */
+.rgba-primary-1 { color: rgba(162,193, 15,1) }
+.rgba-primary-2 { color: rgba(162,193, 15,1) }
+.rgba-primary-3 { color: rgba( 35, 42,  0,1) }
+.rgba-primary-4 { color: rgba(  0,  0,  0,1) }
+
+.rgba-secondary-1-0 { color: rgba(  0,  0,  0,1) }	/* Main Secondary color (1) */
+.rgba-secondary-1-1 { color: rgba( 19, 77,129,1) }
+.rgba-secondary-1-2 { color: rgba( 19, 77,129,1) }
+.rgba-secondary-1-3 { color: rgba(  1, 16, 28,1) }
+.rgba-secondary-1-4 { color: rgba(  0,  0,  0,1) }
+
+.rgba-secondary-2-0 { color: rgba(  0,  0,  0,1) }	/* Main Secondary color (2) */
+.rgba-secondary-2-1 { color: rgba(200,120, 16,1) }
+.rgba-secondary-2-2 { color: rgba(200,120, 16,1) }
+.rgba-secondary-2-3 { color: rgba( 44, 25,  0,1) }
+.rgba-secondary-2-4 { color: rgba(  0,  0,  0,1) }
+
+
+
+
 .App {
   text-align: center;
 }

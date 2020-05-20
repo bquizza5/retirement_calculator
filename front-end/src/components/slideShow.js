@@ -20,7 +20,6 @@ const SlideShow = (props) => {
     }
     return (
         <div>
-            <p>hola my friend</p>
             {data.map((slide) => {
                 return (<div key={slide.slideNumber}>
                     {
