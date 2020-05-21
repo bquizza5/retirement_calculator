@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 
 
@@ -24,9 +24,9 @@ const Slide = (props) => {
 
             
             <div className='slideNav'>
-                <p onClick={props.prev}>{'<--'}</p>
+                <p onClick={props.prev}>◀</p>
                 <p>{props.slide}</p>
-                <p onClick={submitHandler}>--></p>
+                <p onClick={submitHandler}>▶</p>
             </div>
         </div>
     )

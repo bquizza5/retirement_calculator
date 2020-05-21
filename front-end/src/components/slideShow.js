@@ -30,14 +30,17 @@ const SlideShow = (props) => {
     }
 
     const prevSlide = () => {
-        setCurrentSlide(currentSlide - 1)
+        if (currentSlide !== 1) {
+            setCurrentSlide(currentSlide - 1)
+        }
+        
     }
 
     const slideIndicator = (num) => {
-        let notSelected = '●'
-        let selected = '◉'
+        let notSelected = ' ● '
+        let selected = ' ◉ '
         let indicator = notSelected.repeat(data.length)
-        indicator = indicator.substring(0, num -1) + selected + indicator.substring(num)
+        indicator = indicator.substring(0, (num -1)*3) + selected + indicator.substring(num*3)
         
         return indicator
     }
