@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Calculator from './components/calculator'
 import Planner from './components/planner'
+import Header from './components/header'
 import Home from './components/home'
 import './App.css';
 
@@ -9,9 +10,7 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={()=>{setTab('calc')}}>calculator</button>
-      <button onClick={()=>{setTab('plan')}}>planner</button>
-      <h1>Retirement Calculator</h1>
+      <Header setTab={setTab} tab={tab} />
       {tab === "calc" ? <Calculator /> : null}
       {tab === "plan" ? <Planner /> : null}
       {tab === "home" ? <Home setTab={setTab} /> : null}
