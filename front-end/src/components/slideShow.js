@@ -32,6 +32,16 @@ const SlideShow = (props) => {
     const prevSlide = () => {
         setCurrentSlide(currentSlide - 1)
     }
+
+    const slideIndicator = (num) => {
+        let notSelected = '-'
+        let selected = '*'
+        let indicator = notSelected.repeat(data.length)
+        indicator = indicator.substring(0, num -1) + selected + indicator.substring(num)
+        
+        return indicator
+    }
+
     return (
         <div>
             {data.map((slide) => {
@@ -42,7 +52,7 @@ const SlideShow = (props) => {
                                 <PlannerSlide  
                                     question={slide.question}
                                     setter={slide.setter}
-                                    slide={slide.slideNumber}
+                                    slide={slideIndicator(slide.slideNumber)}
                                     value={slide.value}
                                     prev={() => prevSlide()}
                                     next={() => {
@@ -59,7 +69,7 @@ const SlideShow = (props) => {
                                 question={slide.question}
                                 setter={slide.setter}
                                 value={slide.value}
-                                slide={slide.slideNumber}
+                                slide={slideIndicator(slide.slideNumber)}
                                 prev={() => prevSlide()}
                                 next={() => nextSlide()} />
                             : null
