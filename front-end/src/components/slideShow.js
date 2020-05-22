@@ -34,8 +34,8 @@ const SlideShow = (props) => {
     }
 
     const slideIndicator = (num) => {
-        let notSelected = '-'
-        let selected = '*'
+        let notSelected = '●'
+        let selected = '◉'
         let indicator = notSelected.repeat(data.length)
         indicator = indicator.substring(0, num -1) + selected + indicator.substring(num)
         
