@@ -30,22 +30,23 @@ function Planner(props) {
     }
 
 
-    const submitHandler = (n) => {
-        n.preventDefault()
-        props.updateMagicNum(retirementBalance(
-            parseFloat(props.state.allowance),
-            parseFloat(props.state.ywr),
-            parseFloat(props.state.n),
-            parseFloat(props.state.inflation)
-        ))
-    }
+    // const submitHandler = (n) => {
+    //     n.preventDefault()
+    //     props.updateMagicNum(retirementBalance(
+    //         parseFloat(props.state.allowance),
+    //         parseFloat(props.state.ywr),
+    //         parseFloat(props.state.n),
+    //         parseFloat(props.state.inflation)
+    //     ))
+    // }
+
     const getPmt = () => {
         setPmt(pmtCalc(props.state.pv, props.state.magicNum, props.state.i, props.state.n))
     }
 
     return (
         <>
-            <SlideShow />
+            
     
             <h2>Retirement Planning</h2>
             
@@ -59,7 +60,7 @@ function Planner(props) {
             <p>you will need <span className="emphasize">${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.</span></p> 
             </div>
             :
-                null
+            <SlideShow />
             }
             
 
@@ -86,7 +87,7 @@ function Planner(props) {
                 }
             </div>
 
-            {pmt ? <p>To retire in {props.state.n} years, you need to contribute ${pmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} monthly.</p> : null}
+            {pmt ? <p>To retire in {props.state.n} years, you need to contribute <span className="emphasize">${pmt.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</span> monthly.</p> : null}
         </>
     );
 }

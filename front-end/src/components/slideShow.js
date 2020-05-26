@@ -28,6 +28,10 @@ const SlideShow = (props) => {
     const nextSlide = () => {
         setCurrentSlide(currentSlide + 1)
     }
+
+    const prevSlide = () => {
+        setCurrentSlide(currentSlide - 1)
+    }
     return (
         <div>
             {data.map((slide) => {
@@ -40,6 +44,7 @@ const SlideShow = (props) => {
                                     setter={slide.setter}
                                     slide={slide.slideNumber}
                                     value={slide.value}
+                                    prev={() => prevSlide()}
                                     next={() => {
                                         nextSlide() 
                                         getMagicNum()}} />
@@ -55,6 +60,7 @@ const SlideShow = (props) => {
                                 setter={slide.setter}
                                 value={slide.value}
                                 slide={slide.slideNumber}
+                                prev={() => prevSlide()}
                                 next={() => nextSlide()} />
                             : null
                     }

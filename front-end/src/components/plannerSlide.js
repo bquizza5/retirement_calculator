@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 
 
@@ -6,22 +6,28 @@ import React, {useState} from 'react';
 const Slide = (props) => {
 
 
-    const changeHandler =(e) => {
+    const changeHandler = (e) => {
         props.setter(e.target.value)
     }
 
     const submitHandler = () => {
-        if(props.value) {
+        if (props.value) {
             props.next()
+        }
     }
-}
 
     return (
         <div className='plannerSlide'>
+
             <p>{props.question}</p>
             <input onChange={changeHandler} value={props.value} />
-            <button onClick={submitHandler}>next</button>
-            <p>{props.slide}</p>
+
+            
+            <div className='slideNav'>
+                <p onClick={props.prev}>{'<--'}</p>
+                <p>{props.slide}</p>
+                <p onClick={submitHandler}>--></p>
+            </div>
         </div>
     )
 }
