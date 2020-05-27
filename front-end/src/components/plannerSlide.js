@@ -5,23 +5,21 @@ import React, {useState} from 'react';
 
 const Slide = (props) => {
 
-    const [state, setState] = useState()
 
     const changeHandler =(e) => {
-        setState(e.target.value)
+        props.setter(e.target.value)
     }
 
     const submitHandler = () => {
-        if(state) {
-            props.setter(state)
+        if(props.value) {
             props.next()
-        }
     }
+}
 
     return (
         <div className='plannerSlide'>
             <p>{props.question}</p>
-            <input onChange={changeHandler} value={state} />
+            <input onChange={changeHandler} value={props.value} />
             <button onClick={submitHandler}>next</button>
             <p>{props.slide}</p>
         </div>
