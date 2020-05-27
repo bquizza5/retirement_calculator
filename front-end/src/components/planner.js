@@ -46,8 +46,24 @@ function Planner(props) {
     return (
         <>
             <SlideShow />
+    
             <h2>Retirement Planning</h2>
-            <form onSubmit={submitHandler}>
+            
+            {
+                props.state.magicNum !== 0 ?
+            <div>
+            <p>for you to retire with ${props.state.allowance} a month </p>
+            <p>in {props.state.n} years</p>
+            <p>with an average inflation rate of %{props.state.inflation}</p>
+            <p>and a yearly withdrawal rate of %{props.state.ywr}</p> 
+            <p>you will need <span className="emphasize">${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}.</span></p> 
+            </div>
+            :
+                null
+            }
+            
+
+            {/* <form onSubmit={submitHandler}>
                 <input name='allowance' placeholder='Desired Monthly Allowance' onChange={changeHandler} value={props.state.allowance} />
                 <input name='ywr' placeholder='Yearly Withdrawal Rate' onChange={changeHandler} value={props.state.ywr} />
                 <input name='years' placeholder='Number of Years' onChange={changeHandler} value={props.state.n} />
@@ -56,13 +72,13 @@ function Planner(props) {
             </form>
             <div>
                 {props.state.magicNum > 0 ? <p>you will need ${props.state.magicNum.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} to retire.</p> : <></>}
-            </div>
+            </div> */}
             <div>
                 {
                 props.state.magicNum > 0 ?
                     <div>
                         <p>How much do I need to contribute monthly to reach this goal?</p>
-                        <div><label>how much you have save now: </label><input name='pv' placeholder='How much you have now' onChange={changeHandler} value={props.state.pv} /></div>
+                        <div><label>how much you have saved now: </label><input name='pv' placeholder='How much you have now' onChange={changeHandler} value={props.state.pv} /></div>
                         <div><label>expected average rate of return: </label><input name='i' placeholder='Average Yearly Rate(%)' onChange={changeHandler} value={props.state.i} /></div>
                         <button onClick={getPmt}>get monthly contribution</button>
                     </div>
