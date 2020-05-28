@@ -24,9 +24,9 @@ const Slide = (props) => {
 
             
             <div className='slideNav'>
-                <p onClick={props.prev}>◀</p>
+                <p className="navButton" onClick={props.prev}>◀</p>
                 <p>{props.slide}</p>
-                <p onClick={submitHandler}>▶</p>
+                <p className="navButton" onClick={submitHandler}>▶</p>
             </div>
         </div>
     )
