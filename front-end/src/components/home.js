@@ -28,7 +28,7 @@ const Home = (props) => {
                 <p>
                     This planner was built to help you estimate how much 
                     you need to retire, and then how much you need to 
-                    contribute monthly to retire.
+                    contribute monthly to get that amount.
                 </p>
                 <button onClick={() => { props.setTab('plan') }}>planner</button>
 
