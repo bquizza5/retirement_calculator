@@ -17,7 +17,6 @@ export const FV = (pv, i, pmt, n) => {
     //years = years left until desired retirement date
     //inflation = average inflation
 export const retirementBalance = (allowance, rate, years, inflation) => {
-
     return (((allowance*12)/(rate/100))*(Math.pow((inflation/100 + 1), years))).toFixed(2)
 }
 
